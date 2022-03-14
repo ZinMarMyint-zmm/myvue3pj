@@ -1,26 +1,42 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <h1>Hi</h1>
+  <div v-if="showModal">
+    <BackModal theme="success" @close="showModal=false">
+     <h1>Login sucess</h1>
+     <p>welcome user zin mar myint</p>
+     </BackModal>
+  </div>
+  <button @click="showModal=true">Log in</button><br>
+
+  <div v-if="deleteModal">
+    <BackModal theme="delete" @close="deleteModal=false">
+      <h1>Delete success</h1>
+      <p>Your modal is deleted</p>
+     </BackModal>
+  </div>
+  <button @click="deleteModal=true">Delete</button>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import BackModal from "./components/BackModal.vue"
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  data(){
+   return{
+     
+     
+     showModal:false,
+     deleteModal:false
+   }
+  },
+  components:{
+    BackModal
   }
+  
 }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style scoped>
+h1{
+color:blue;
 }
 </style>
